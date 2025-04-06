@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using TestWebApp.Business;
 using TestWebApp.DataAccess;
 using TestWebApp.Dto;
+using TestWebApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
+app.UseMiddleware<CustomExceptionHandler>();
 
 app.UseHttpsRedirection();
 

@@ -9,10 +9,8 @@ using TestWebApp.Core;
 
 namespace TestWebApp.Business.Interfaces
 {
-    public interface IUserDataService: IServiceGet<UserData>, IServiceCreate<UserData>
+    public interface ILogDataService: IServiceGet<LogData>, IServiceCreate<LogData>
     {
-        IEnumerable<UserData> GetAll(DataFilter? filters);
-
-        Task CreateAsync(IEnumerable<UserData> list);
+        IEnumerable<LogData> GetAll();
     }
 }

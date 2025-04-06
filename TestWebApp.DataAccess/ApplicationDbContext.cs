@@ -19,6 +19,8 @@ namespace TestWebApp.DataAccess
 
         public DbSet<UserDataEntity> UserDataEntities { get; set; }
 
+        public DbSet<LogEntity> LogEntities { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -28,31 +28,14 @@ namespace TestWebApp.Business.Services
             return _mapper.Map<UserData>(_userDataRepository.Get(id));
         }
 
-        public UserData Create(UserData data)
+        public Task Create(UserData data)
         {
             var userEntity = _mapper.Map<UserDataEntity>(data);
             _userDataRepository.Create(userEntity);
 
-            return data;
+            return _userDataRepository.SaveAsync();
+            
         }
-
-        public UserData Edit(UserData data)
-        {
-            var userEntity = _mapper.Map<UserDataEntity>(data);
-            _userDataRepository.Update(userEntity);
-
-            return data;
-        }
-
-        public void Delete(int id)
-        {
-            _userDataRepository.Delete(id);
-        }
-
-        public Task DeleteAll()
-        {
-            return _userDataRepository.DeleteAll();
-        } 
 
         public async Task CreateAsync(IEnumerable<UserData> list)
         {

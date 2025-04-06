@@ -1,8 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-
-namespace TestWebApp.Common
+﻿namespace TestWebApp.Common
 {
     public class DataFilter
     {
@@ -10,6 +6,6 @@ namespace TestWebApp.Common
 
         public DataFilterType DataFilterType { get; set; }
 
-        public string Test { get; set; }
+        public string? Value { get; set; }
     }
 }

@@ -16,7 +16,8 @@ namespace TestWebApp.DataAccess
                 options => options.UseSqlite(connectionString,
                     x => x.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)))
                 
-                .AddScoped<IUserDataRepository, UserDataRepository>();
+                .AddScoped<IUserDataRepository, UserDataRepository>()
+                .AddScoped<ILogRepository, LogRepository>();
         }
 
         public static void DatabaseMigration(IServiceProvider serviceProvider)

@@ -13,9 +13,8 @@ namespace TestWebApp.Controllers
     {
         private readonly ILogger<UserDataController> _logger = logger;
 
-
-        [HttpGet("GetAllData")]
-        public IEnumerable<UserDto> GetAllData([FromQuery] DataFilter? filters = null)
+        [HttpPost("GetFilteredData")]
+        public IEnumerable<UserDto> GetItems(DataFilter? filters = null)
         {
             return userDataService.GetAll(filters).Select(mapper.Map<UserDto>);
         }

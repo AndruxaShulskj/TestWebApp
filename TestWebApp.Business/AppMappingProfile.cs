@@ -14,6 +14,7 @@ namespace TestWebApp.Business
         public AppMappingProfile()
         {
             CreateMap<UserData, UserDataEntity>().ReverseMap();
+            CreateMap<LogData, LogEntity>().ReverseMap();
         }
     }
 }

@@ -29,11 +29,6 @@ namespace TestWebApp.DataAccess.Repositories
             _applicationDbContext.UserDataEntities.Add(item);
         }
 
-        public void Update(UserDataEntity item)
-        {
-            _applicationDbContext.Entry(item).State = EntityState.Modified;
-        }
-
         public void Delete(int id)
         {
             var item = _applicationDbContext.UserDataEntities.Find(id);

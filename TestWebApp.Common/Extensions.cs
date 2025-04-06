@@ -14,7 +14,7 @@ namespace TestWebApp.Common
             var property = properties.FirstOrDefault(p => string.Equals(p.Name, filter.PropertyName, StringComparison.CurrentCultureIgnoreCase)) ?? throw new Exception($"Property with name {filter.PropertyName} doesn't exist");
             var parameter = Expression.Parameter(typeof(T), "x");
             var member = Expression.Property(parameter, property.Name);
-            var value = Convert.ChangeType(filter.Test, property.PropertyType);
+            var value = Convert.ChangeType(filter.Value, property.PropertyType);
 
             query = filter.DataFilterType switch
             {

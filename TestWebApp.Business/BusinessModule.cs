@@ -9,6 +9,7 @@ public static class BusinessModule
     public static void RegisterBusiness(this IServiceCollection services)
     {
         services.AddTransient<IUserDataService, UserDataService>()
+            .AddTransient<ILogDataService, LogDataService>()
             .AddAutoMapper(typeof(AppMappingProfile)); ;
     }
 }

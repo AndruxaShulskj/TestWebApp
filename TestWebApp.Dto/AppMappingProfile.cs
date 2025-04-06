@@ -9,6 +9,7 @@ namespace TestWebApp.Dto
         public AppMappingProfile()
         {
             CreateMap<UserData, UserDto>().ReverseMap();
+            CreateMap<LogData, LogDto>().ReverseMap();
         }
     }
 }

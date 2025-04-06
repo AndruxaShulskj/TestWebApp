@@ -14,6 +14,7 @@ namespace TestWebApp.DataAccess
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<UserDataEntity> UserDataEntities { get; set; }

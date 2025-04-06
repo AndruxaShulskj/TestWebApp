@@ -10,5 +10,6 @@ namespace TestWebApp.Business.Interfaces
 {
     public interface IUserDataService: IServiceBase<UserData>
     {
+        Task CreateAsync(IEnumerable<UserData> list);
     }
 }

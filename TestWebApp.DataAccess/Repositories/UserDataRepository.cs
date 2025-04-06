@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestWebApp.Common;
 using TestWebApp.DataAccess.Entities;
 using TestWebApp.DataAccess.Interfaces;
 
@@ -15,7 +16,7 @@ namespace TestWebApp.DataAccess.Repositories
             _applicationDbContext = applicationDbContext;
         }
 
-        public IEnumerable<UserDataEntity> GetAll() => _applicationDbContext.UserDataEntities.AsNoTracking();
+        public IEnumerable<UserDataEntity> GetAll(DataFilter? filters) => _applicationDbContext.UserDataEntities.UseCustomFilter(filters).AsNoTracking();
         
 
         public UserDataEntity Get(int id)

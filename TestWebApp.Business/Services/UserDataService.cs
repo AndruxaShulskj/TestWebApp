@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TestWebApp.Business.Interfaces;
 using TestWebApp.Business.Models;
+using TestWebApp.Common;
 using TestWebApp.DataAccess.Entities;
 using TestWebApp.DataAccess.Interfaces;
 
@@ -17,9 +18,9 @@ namespace TestWebApp.Business.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<UserData> GetAll()
+        public IEnumerable<UserData> GetAll(DataFilter? filter)
         {
-            return _userDataRepository.GetAll().Select(k=>_mapper.Map<UserData>(k));
+            return _userDataRepository.GetAll(filter).Select(k=>_mapper.Map<UserData>(k));
         }
 
         public UserData Get(int id)
@@ -51,6 +52,19 @@ namespace TestWebApp.Business.Services
         public Task DeleteAll()
         {
             return _userDataRepository.DeleteAll();
+        } 
+
+        public async Task CreateAsync(IEnumerable<UserData> list)
+        {
+            await _userDataRepository.DeleteAll();
+            var listEntities = list.Select(k => _mapper.Map<UserDataEntity>(k));
+
+            foreach (var entity in listEntities)
+            {
+                _userDataRepository.Create(entity);
+            }
+
+            await _userDataRepository.SaveAsync();
         }
     }
 }

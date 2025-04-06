@@ -1,9 +1,11 @@
-﻿namespace TestWebApp.Core
+﻿using TestWebApp.Common;
+
+namespace TestWebApp.Core
 {
     public interface IRepository<T> : IDisposable
             where T : class
     {
-        IEnumerable<T> GetAll(); // получение всех объектов
+        IEnumerable<T> GetAll(DataFilter? filter); // получение всех объектов
         T Get(int id); // получение одного объекта по id
         void Create(T item); // создание объекта
         void Update(T item); // обновление объекта
